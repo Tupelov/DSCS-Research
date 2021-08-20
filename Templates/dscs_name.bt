@@ -1,0 +1,56 @@
+//------------------------------------------------
+//--- 010 Editor v11.0.1 Binary Template
+//
+//      File: texinfo
+//   Authors: Tupelov 
+//   Version: 1.0
+//   Purpose: 
+//  Category: 
+// File Mask: 
+//  ID Bytes: 
+//   History: 1.0: Intial Template
+//------------------------------------------------
+
+
+struct Entry{
+
+	int type1Cnt;
+	int type2Cnt;
+	int type1Offsets[type1Cnt];
+	int type2Offsets[type2Cnt];//Might be some sort of texture/material name? Some start with MTR
+	
+	
+
+	//Read type 1 strings
+
+	local int temp = 0;
+
+	while (temp<type1Cnt)
+	{
+		if (temp == type1Cnt-1) {//If not the end read till the start of the type2
+			if (type2Cnt>0) {
+				string type1Name = ReadStringLength(type1Offsets[temp], type2Offsets[0] - type1Offsets[temp]);
+			}
+			else
+			{
+				string type1Name = ReadString(type1offSets[temp]);
+			}
+			break;
+		}
+
+		string type1Name[type1Offsets[temp + 1] - type1Offsets[temp]];
+			
+			//= ReadStringLength(type1Offsets[temp], );
+	}
+
+//	char Name[64];
+//	int TextureID;
+//	struct Box{
+//		Coordinate TL<name="Top Left">;
+//		Coordinate TR<name="Top Right">;
+//		Coordinate BL<name="Bottom Left">;
+//		Coordinate BR<name="Bottom Right">;
+//	}BoundingBox;
+//	
+//	int unknownInt<comment="Always 1?">;
+}NameFile;
